@@ -41,12 +41,19 @@ $box = [
 
 
 
- function recursiveSearch(array $arr, string $str){
+ function recursiveSearch(array $arr, string $str)
+ {
     $result = false;
-    foreach($arr as $key => $elem){
-        if(is_array($elem)){
-            recursiveSearch($elem, $str);
-        } elseif($elem == $str){
+
+    foreach($arr as $key => $elem)
+    {
+        if(is_array($arr[$key]))
+        {
+            recursiveSearch($arr[$key], $str);
+          
+        } 
+        if($elem === $str)
+        {
         $result = true;
         } 
             
@@ -57,3 +64,5 @@ $box = [
  $show = recursiveSearch($box, 'Тетрадь');
  var_dump($show);
  print($show);
+
+ // не работает. Пока не победил=)
