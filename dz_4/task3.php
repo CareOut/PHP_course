@@ -39,30 +39,23 @@ $box = [
     ]
  ];
 
-
-
- function recursiveSearch(array $arr, string $str)
+$str = readline("Введите, пожалуйста, слово\n");
+ function recursiveSearch(array $arr, string $str):bool
  {
-    $result = false;
-
-    foreach($arr as $key => $elem)
+      foreach($arr as $elem)
     {
-        if(is_array($arr[$key]))
+        if(is_array($elem))
         {
-            recursiveSearch($arr[$key], $str);
-          
+           if(recursiveSearch($elem, $str))
+           return true;         
         } 
         if($elem === $str)
-        {
-        $result = true;
-        } 
+        return true;
             
     }
-    return $result;
+    return false;
  };
 
- $show = recursiveSearch($box, 'Тетрадь');
- var_dump($show);
- print($show);
-
- // не работает. Пока не победил=)
+ echo recursiveSearch($box, $str) ? 'true' : 'false';
+ 
+ 
