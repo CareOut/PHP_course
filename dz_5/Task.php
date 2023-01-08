@@ -20,7 +20,7 @@ public function __construct(User $user, string $description = null, int $priorit
     $this->setDateCreated(new DateTime());
 }
 
-public function markIsDone():variant_mod
+public function markIsDone():void
 {
 $this->setDateUpdated(new DateTime);
 $this->setDateDone(new DateTime);
@@ -42,13 +42,22 @@ public function getDateUpdated():DateTime
     return $this->dateUpdated;
 }
 
+public function setDateCreated(DateTime $dateCreated):void
+{
+    $this->dateCreated = $dateCreated;
+}
+
+public function setDateUpdated(DateTime $dateUpdated):void
+{
+    $this->dateUpdated = $dateUpdated;
+}
 
 public function getDateDone():DateTime 
 {
     return $this->dateDone;
 }
 
-public function getPriority():DateTime 
+public function getPriority():int 
 {
     return $this->priority;
 }
@@ -58,10 +67,6 @@ public function setPriority(int $priority):void
  $this->priority = $priority;
 }
 
-private function setIsDone():void 
-{
-    $this->isDone = true;
-}
 
 public function setUser(User $user):void 
 {
@@ -70,7 +75,7 @@ public function setUser(User $user):void
 
 public function setComment(Comment $comment):void 
 {
-
+$this->comments[] = $comment;
 }
 
 public function getUser():User
