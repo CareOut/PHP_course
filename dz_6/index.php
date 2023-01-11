@@ -1,7 +1,4 @@
-<?php
-include "auth.php";
 
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,7 +6,12 @@ include "auth.php";
     <title>ToDoList</title>
 </head>
 <body>
-<?php include "menu.php";?>
-<a href="toDo.php">Задачи</a>
+<?php if(is_null($userName)):?>
+    <a href="view/signin.php">Войти</a>
+<?php else: ?>
+   <?=$userName?> <a href="/?controller=security&action=logout">Выйти</a>
+   <a href="/?controller=tasks">Задачи</a>
+<?php endif; ?>
+
 </body>
 </html>
